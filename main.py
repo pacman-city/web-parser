@@ -7,18 +7,19 @@ res2 = requests.get('https://news.ycombinator.com/news?p=2')
 soup = BeautifulSoup(res.text, 'html.parser')
 soup2 = BeautifulSoup(res2.text, 'html.parser')
 
+
+links = soup.select('.titlelink')
+subtext = soup.select('.subtext')
+links2 = soup2.select('.titlelink')
+subtext2 = soup2.select('.subtext')
+
+# Поиск элементов:
 # soup.body # body tag
 # soup.find('div')
 # soup.find(id='item-id')
 # soup.find_all('div')
 # soup.find('div').getText()
 # soup.find('div').get('href', None) # селектор атрибута | default - none
-
-
-links = soup.select('.titlelink')
-subtext = soup.select('.subtext')
-links2 = soup2.select('.titlelink')
-subtext2 = soup2.select('.subtext')
 
 mega_links = links + links2
 mega_subtext = subtext + subtext2
